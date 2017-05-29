@@ -16,13 +16,13 @@ import org.springframework.stereotype.Component;
 public class Receiver {
 	// standalone: 3.1 secs / 1000 messages
 	// cluster (2 nodes): 5.6 / 1000 messages
-	// cluster (2 nodes with reverse deployment): ?? / 1000 messages
+	// cluster (2 nodes with reverse deployment): 5.9 / 1000 messages
 	// remote client (no cluster): 4.5 / 1000 messages
 	// cluster HA (2 nodes): ?? / 1000 messages
 	// cluster HA (2 nodes with reverse deployment): ?? / 1000 messages
-    @RabbitListener(bindings={@QueueBinding(value=@Queue(value="fetch-listings-page-queue", durable="true"),
-        	exchange=@Exchange(value="ebay-exchange", durable="true"), 
-        	key="fetch-listings-queue")})
+    @RabbitListener(bindings={@QueueBinding(value=@Queue(value="test-queue", durable="true"),
+        	exchange=@Exchange(value="test-exchange", durable="true"),
+        	key="test-key")})
     public void consume(Message msg) {
     	try {
     		String correlationId = getCorrelationId(msg);
